@@ -8,8 +8,8 @@ section .data
 section .text
 
 _main: ; unrolled for n = 40
-    mov eax, 1                      ; set eax=1
-    mov ebx, 1                      ; set ebx=1
+    mov     eax, 1                  ; set eax=1
+    mov     ebx, 1                  ; set ebx=1
 
     mov     edx, ebx                ; temp = b
     add     ebx, eax                ; b = a + b
