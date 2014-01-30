@@ -1,6 +1,8 @@
 CC=clang
 CXX=clang++
 
+ASMFLAGS=-f macho
+LDFLAGS=-macosx_version_min 10.7.0 -lSystem -lc /usr/lib/crt1.o
 FLAGS=-march=native -O4 -Wall -Wextra -pedantic
 CFLAGS=-std=c11 $(FLAGS)
 CXXFLAGS=-std=c++11 $(FLAGS)
@@ -11,6 +13,10 @@ OBJCFLAGS=-fobjc-arc $(FLAGS)
 all: clean build
 
 build:
+	nasm $(ASMFLAGS) fib.asm
+	ld $(LDFLAGS) fib.o -o fib.asm.o
+	nasm $(ASMFLAGS) fib-unrolled.asm
+	ld $(LDFLAGS) fib-unrolled.o -o fib-unrolled.asm.o
 	$(CC) $(CFLAGS) fib.c -o fib.c.out
 	$(CC) $(CFLAGS) fib-iter.c -o fib-iter.c.out
 	$(CXX) $(CXXFLAGS) fib-memo.cpp -o fib-memo.cpp.out
