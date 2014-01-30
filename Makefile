@@ -12,6 +12,7 @@ all: clean build
 
 build:
 	$(CC) $(CFLAGS) fib.c -o fib.c.out
+	$(CC) $(CFLAGS) fib-iter.c -o fib-iter.c.out
 	$(CXX) $(CXXFLAGS) fib-memo.cpp -o fib-memo.cpp.out
 	$(CC) $(OBJCFLAGS) fib.m -o fib.m.out
 	$(CC) $(OBJCFLAGS) fib-memo.m -o fib-memo.m.out
