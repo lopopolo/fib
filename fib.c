@@ -1,7 +1,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-unsigned long fib(unsigned long n)
+unsigned long long fib(unsigned long long n);
+
+unsigned long long fib(unsigned long long n)
 {
   if (n < 2) {
     return 1;
@@ -12,11 +14,11 @@ unsigned long fib(unsigned long n)
 
 int main(int argc, char **argv)
 {
-  unsigned long n = 40;
+  unsigned long long n = 40;
   if (argc > 1) {
-    n = atoi(argv[1]);
+    n = strtoull(argv[1], NULL, 10);
   }
-  printf("%lu\n", fib(n));
+  printf("%llu\n", fib(n));
 
   return 0;
 }

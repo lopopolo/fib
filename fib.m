@@ -1,18 +1,21 @@
+// vim: set ft=objc:
 #import <Foundation/Foundation.h>
+
+NSNumber * fib(NSNumber *n);
 
 NSNumber * fib(NSNumber *n)
 {
-    NSUInteger nn = [n unsignedIntegerValue];
+    unsigned long long nn = [n unsignedLongLongValue];
     NSNumber *r = nil;
     if (nn < 2U)
     {
-        r = [NSNumber numberWithUnsignedInteger:1U];
+        r = [NSNumber numberWithUnsignedLongLong:1ULL];
     }
     else
     {
-        NSNumber *n1 = [NSNumber numberWithUnsignedInteger:nn - 1];
-        NSNumber *n2 = [NSNumber numberWithUnsignedInteger:nn - 2];
-        r = [NSNumber numberWithUnsignedInteger:[fib(n1) unsignedIntegerValue] + [fib(n2) unsignedIntegerValue]];
+        NSNumber *n1 = [NSNumber numberWithUnsignedLongLong:nn - 1ULL];
+        NSNumber *n2 = [NSNumber numberWithUnsignedLongLong:nn - 2ULL];
+        r = [NSNumber numberWithUnsignedLongLong:[fib(n1) unsignedLongLongValue] + [fib(n2) unsignedLongLongValue]];
     }
     return r;
 }
@@ -21,12 +24,12 @@ NSNumber * fib(NSNumber *n)
 int main(int argc, char * argv[])
 {
     @autoreleasepool {
-        unsigned long n = 40;
+        NSUInteger n = 40U;
         if (argc > 1)
         {
-            n = atoi(argv[1]);
+            n = strtoul(argv[1], NULL, 10);
         }
-        printf("%lu\n", [fib([NSNumber numberWithUnsignedInteger:n]) unsignedIntegerValue]);
+        printf("%llu\n", [fib([NSNumber numberWithUnsignedInteger:n]) unsignedLongLongValue]);
         return 0;
     }
 }
