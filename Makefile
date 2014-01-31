@@ -19,6 +19,7 @@ build:
 	ld $(LDFLAGS) fib-unrolled.o -o fib-unrolled.asm.o
 	$(CC) $(CFLAGS) fib.c -o fib.c.out
 	$(CC) $(CFLAGS) fib-iter.c -o fib-iter.c.out
+	$(CC) $(CFLAGS) fib-logn.c -o fib-logn.c.out
 	$(CXX) $(CXXFLAGS) fib-memo.cpp -o fib-memo.cpp.out
 	$(CC) $(OBJCFLAGS) fib.m -o fib.m.out
 	$(CC) $(OBJCFLAGS) fib-memo.m -o fib-memo.m.out
