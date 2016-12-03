@@ -6,11 +6,11 @@ function fib
 	local a="1"
 	local b="1"
 	local temp="0"
-	while (( $n > 0 )); do
-		temp=$b
-		b=$(expr $a + $b)
-		a=$temp
-		n=$(expr $n - 1)
+	while (( n > 0 )); do
+		temp="$b"
+		b="$(( a + b ))"
+		a="$temp"
+		n=$(( n - 1 ))
 	done
 	echo "$a"
 }
