@@ -22,7 +22,7 @@ make bench
 ```
 
 | Implementation          | Iterations | Time      | Iterations / sec |
-|=========================|============|===========|==================|
+|-------------------------|------------|-----------|------------------|
 | fib-iter.bash           | 50         | 0m0.214s  | 234              |
 | fib-iter.c.out          | 50         | 0m0.100s  | 500              |
 | fib-iter.js             | 50         | 0m2.598s  | 19.25            |
@@ -50,3 +50,4 @@ make bench
 | fib-iter.scala          | 10         | 0m5.896s  | 1.696            |
 | fib-memo.scala          | 10         | 0m5.983s  | 1.671            |
 | fib-tailrec.scala       | 10         | 0m5.881s  | 1.700            |
+
