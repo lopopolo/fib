@@ -12,7 +12,7 @@ OBJCFLAGS=-fobjc-arc $(FLAGS)
 
 all: clean build
 
-build:
+build: scala
 	nasm $(ASMFLAGS) fib.asm
 	ld $(LDFLAGS) fib.o -o fib.asm.o
 	nasm $(ASMFLAGS) fib-unrolled.asm
@@ -23,6 +23,21 @@ build:
 	$(CXX) $(CXXFLAGS) fib-memo.cpp -o fib-memo.cpp.out
 	$(CC) $(OBJCFLAGS) fib-memo.m -o fib-memo.m.out
 
+scala:
+	mkdir -p dist
+	mkdir -p dist/fib-future-memo
+	scalac -d dist/fib-future-memo fib-future-memo.scala
+	mkdir -p dist/fib-future
+	scalac -d dist/fib-future fib-future.scala
+	mkdir -p dist/fib-iter
+	scalac -d dist/fib-iter fib-iter.scala
+	mkdir -p dist/fib-memo
+	scalac -d dist/fib-memo fib-memo.scala
+	mkdir -p dist/fib-tailrec
+	scalac -d dist/fib-tailrec fib-tailrec.scala
+	mkdir -p dist/fib
+	scalac -d dist/fib fib.scala
+
 clean:
-	-rm -f -- *.o *.out *.class
+	-rm -rf -- *.o *.out *.class dist
 
