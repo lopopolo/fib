@@ -21,7 +21,6 @@ build:
 	$(CC) $(CFLAGS) fib-iter.c -o fib-iter.c.out
 	$(CC) $(CFLAGS) fib-logn.c -o fib-logn.c.out
 	$(CXX) $(CXXFLAGS) fib-memo.cpp -o fib-memo.cpp.out
-	$(CC) $(OBJCFLAGS) fib.m -o fib.m.out
 	$(CC) $(OBJCFLAGS) fib-memo.m -o fib-memo.m.out
 
 clean:
