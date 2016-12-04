@@ -2,29 +2,27 @@
 
 static NSMutableDictionary *cache = nil;
 
-NSNumber * fib(NSNumber *n);
+unsigned long long fib(unsigned long long n);
 
-NSNumber * fib(NSNumber *n)
+unsigned long long fib(unsigned long long n)
 {
     static dispatch_once_t token;
     dispatch_once(&token, ^{
-        cache = [NSMutableDictionary dictionaryWithCapacity:[n unsignedIntegerValue]];
+        cache = [NSMutableDictionary dictionaryWithCapacity:n];
     });
-    NSNumber *r = [cache objectForKey:n];
-    if (r == nil)
+    NSNumber *key = [NSNumber numberWithUnsignedLongLong:n];
+    unsigned long long r = [cache[key] unsignedLongLongValue];
+    if (cache[key] == nil)
     {
-        unsigned long long nn = [n unsignedLongLongValue];
-        if (nn < 2U)
+        if (n < 2ULL)
         {
-            r = [NSNumber numberWithUnsignedLongLong:1ULL];
+            r = 1ULL;
         }
         else
         {
-            NSNumber *n1 = [NSNumber numberWithUnsignedLongLong:nn - 1ULL];
-            NSNumber *n2 = [NSNumber numberWithUnsignedLongLong:nn - 2ULL];
-            r = [NSNumber numberWithUnsignedLongLong:[fib(n1) unsignedLongLongValue] + [fib(n2) unsignedLongLongValue]];
+            r = fib(n - 1) + fib(n - 2);
         }
-        cache[n] = r;
+        cache[key] = [NSNumber numberWithUnsignedLongLong:r];
     }
     return r;
 }
@@ -38,7 +36,7 @@ int main(int argc, char * argv[])
         {
             n = strtoul(argv[1], NULL, 10);
         }
-        printf("%lu\n", [fib([NSNumber numberWithUnsignedInteger:n]) unsignedIntegerValue]);
+        printf("%llu\n", fib(n));
         return 0;
     }
 }
