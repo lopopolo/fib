@@ -41,3 +41,15 @@ scala:
 clean:
 	-rm -rf -- *.o *.out *.class dist
 
+bench: bench-exe bench-scala
+
+bench-exe:
+	find . -perm +0111 -depth 1 -type f | grep -v fib.bash | grep -v fib.php | grep -v fib.rb | xargs -n 1 -I % bash -c 'echo -e "%"; time for i in $$(seq 50); do % > /dev/null; done'
+
+bench-scala:
+	time for i in `seq 10`; do scala -classpath dist/fib Main > /dev/null; done
+	time for i in `seq 10`; do scala -classpath dist/fib-future-memo Main > /dev/null; done
+	time for i in `seq 10`; do scala -classpath dist/fib-iter Main > /dev/null; done
+	time for i in `seq 10`; do scala -classpath dist/fib-memo Main > /dev/null; done
+	time for i in `seq 10`; do scala -classpath dist/fib-tailrec Main > /dev/null; done
+
