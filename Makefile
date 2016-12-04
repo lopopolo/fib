@@ -3,7 +3,7 @@ CXX=clang++
 
 ASMFLAGS=-f macho
 LDFLAGS=-macosx_version_min 10.7.0 -lSystem -lc /usr/lib/crt1.o
-FLAGS=-march=native -O4 -Wall -Wextra -pedantic
+FLAGS=-march=native -O3 -Wall -Wextra -pedantic
 CFLAGS=-std=c11 $(FLAGS)
 CXXFLAGS=-std=c++11 $(FLAGS)
 OBJCFLAGS=-fobjc-arc $(FLAGS)
