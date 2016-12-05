@@ -1,24 +1,26 @@
+#include <inttypes.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include <stdio.h>
 
-unsigned long long fib(unsigned long long n);
+uint64_t fib(uint64_t n);
 
-unsigned long long fib(unsigned long long n)
+uint64_t fib(uint64_t n)
 {
-  if (n < 2) {
-    return 1;
+  if (n < UINT64_C(2)) {
+    return UINT64_C(1);
   } else {
-    return fib(n - 1) + fib(n - 2);
+    return fib(n - UINT64_C(1)) + fib(n - UINT64_C(2));
   }
 }
 
 int main(int argc, char **argv)
 {
-  unsigned long long n = 40;
+  uint64_t n = UINT64_C(40);
   if (argc > 1) {
     n = strtoull(argv[1], NULL, 10);
   }
-  printf("%llu\n", fib(n));
+  printf("%" PRIu64 "\n", fib(n));
 
   return 0;
 }

@@ -1,14 +1,16 @@
+#include <inttypes.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include <stdio.h>
 
-unsigned long long fib(unsigned long long n);
+uint64_t fib(uint64_t n);
 
-unsigned long long fib(unsigned long long n)
+uint64_t fib(uint64_t n)
 {
-  unsigned long long a = 1;
-  unsigned long long b = 1;
-  unsigned long long temp = 0;
-  for (unsigned long long i = 0ull; i < n; ++i) {
+  uint64_t a = UINT64_C(1);
+  uint64_t b = UINT64_C(1);
+  uint64_t temp = UINT64_C(0);
+  for (uint64_t i = UINT64_C(0); i < n; ++i) {
     temp = b;
     b = a + b;
     a = temp;
@@ -18,11 +20,11 @@ unsigned long long fib(unsigned long long n)
 
 int main(int argc, char **argv)
 {
-  unsigned long long n = 40;
+  uint64_t n = UINT64_C(40);
   if (argc > 1) {
     n = strtoull(argv[1], NULL, 10);
   }
-  printf("%llu\n", fib(n));
+  printf("%" PRIu64 "\n", fib(n));
 
   return 0;
 }

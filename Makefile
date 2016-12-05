@@ -12,7 +12,9 @@ OBJCFLAGS=-fobjc-arc $(FLAGS)
 
 all: clean build
 
-build: scala
+build: scala clang
+
+clang:
 	nasm $(ASMFLAGS) fib.asm
 	ld $(LDFLAGS) fib.o -o fib.asm.o
 	nasm $(ASMFLAGS) fib-unrolled.asm
