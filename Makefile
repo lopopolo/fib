@@ -25,6 +25,11 @@ clang:
 	$(CXX) $(CXXFLAGS) fib-memo.cpp -o fib-memo.cpp.out
 	$(CC) $(OBJCFLAGS) fib-memo.m -o fib-memo.m.out
 
+clang-analyze: CFLAGS += --analyze -Xanalyzer -analyzer-output=text
+clang-analyze: CXXFLAGS += --analyze -Xanalyzer -analyzer-output=text
+clang-analyze: OBJCFLAGS += --analyze -Xanalyzer -analyzer-output=text
+clang-analyze: clang
+
 scala:
 	mkdir -p dist
 	mkdir -p dist/fib-future-memo
